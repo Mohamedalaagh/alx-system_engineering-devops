@@ -1,2 +1,2 @@
 #!/bin/bash 
-chown vinset:staff .
+chown vincent:staff .
