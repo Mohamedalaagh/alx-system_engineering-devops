@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# Print bad luck at specific index.
+
+k=1
+
+while [ $k -le 10 ]
+do
+    if [ $k -eq 4 ]
+    then
+        echo "bad luck"
+    elif [ $k -eq 8 ]
+    then
+        echo "good luck"
+    else
+        echo "Best School"
+    fi
+    ((k++))
+done
+
