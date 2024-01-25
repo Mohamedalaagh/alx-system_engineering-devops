@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Print 'best school' 10 times
+
+k=0
+
+while [ $k -lt 10 ]
+do
+    echo "Best School"
+    ((k++))
+done
+
