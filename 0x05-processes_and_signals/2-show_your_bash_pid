@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Bash script to retrieve the PID of the current Bash process
+# by searching for lines containing the word "bash" in the process list.
+# thus allowing you to easily get the PID of your Bash process.
+ps auxf | grep bash
+
