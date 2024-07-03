@@ -1,4 +1,12 @@
-#!/usr/bin/env bash
-# Bash script that uses ssh to connect to your server using the private
-# key ~/.ssh/school with the user ubuntu
-ssh ubuntu@52.73.73.32 -i ~/.ssh/school
+#!/bin/bash
+
+# Check if the correct number of arguments is provided
+if [ "$#" -ne 1 ]; then
+    echo "Usage: $0 server_ip"
+    exit 1
+fi
+
+SERVER_IP="$1"
+
+# SSH command to connect to the server
+ssh -i ~/.ssh/school -o StrictHostKeyChecking=no ubunt@52.73.37.32
