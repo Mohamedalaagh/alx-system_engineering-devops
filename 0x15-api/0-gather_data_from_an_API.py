@@ -33,6 +33,6 @@ if __name__ == '__main__':
     # Display the results
     print("Employee {} is done with tasks({}/{}):"
           .format(employee_name, done, len(t)))
-    
+
     for task in done_tasks:
         print("\t {}".format(task.get('title')))
