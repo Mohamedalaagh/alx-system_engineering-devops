@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# This script loop on each line on the file
+
+file='/etc/passwd'
+
+while read -r ; do
+	cut -d':' -f1,3,6
+done < "$file"
