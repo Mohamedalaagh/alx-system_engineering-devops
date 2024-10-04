@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#This is a script that prints Best School ten times
+
+
+for file in  * ; do
+	echo "$file" | cut -d'-' -f2
+done
