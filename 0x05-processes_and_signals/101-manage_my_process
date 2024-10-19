@@ -1,5 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # /etc/init.d/101-manage_my_process
+# Managing file
 
 PID_FILE="/var/run/my_process.pid"
 PROCESS_NAME="manage_my_process"
