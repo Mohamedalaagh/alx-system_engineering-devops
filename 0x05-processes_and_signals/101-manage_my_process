@@ -2,51 +2,25 @@
 # /etc/init.d/101-manage_my_process
 # Managing file
 
-PID_FILE="/var/run/my_process.pid"
-PROCESS_NAME="manage_my_process"
-
-start() {
-    if [ -f "$PID_FILE" ]; then
-        echo "$PROCESS_NAME is already running."
-    else
-        echo "Starting $PROCESS_NAME..."
-        nohup /path/to/manage_my_process &> /dev/null &
-        echo $! > "$PID_FILE"
-        echo "$PROCESS_NAME started"
-    fi
-}
-
-stop() {
-    if [ -f "$PID_FILE" ]; then
-        PID=$(cat "$PID_FILE")
-        echo "Stopping $PROCESS_NAME..."
-        kill "$PID"
-        rm "$PID_FILE"
-        echo "$PROCESS_NAME stopped"
-    else
-        echo "$PROCESS_NAME is not running."
-    fi
-}
-
-restart() {
-    echo "Restarting $PROCESS_NAME..."
-    stop
-    start
-    echo "$PROCESS_NAME restarted"
-}
-
-case "$1" in
-  start)
-    start
-    ;;
-  stop)
-    stop
-    ;;
-  restart)
-    restart
-    ;;
-  *)
-    echo "Usage: 101-manage_my_process {start|stop|restart}"
-    exit 1
-    ;;
-esac
+if [ "${1}" == "start" ]
+then
+    ./manage_my_process &
+    touch /var/run/my_process.pid
+    echo "$!" > /var/run/my_process.pid
+    echo "manage_my_process started"
+elif [ "${1}" == "stop" ]
+then
+    echo "manage_my_process stopped"
+    kill "$(cat /var/run/my_process.pid)"
+    rm /var/run/my_process.pid
+elif [ "${1}" == "restart" ]
+then
+    kill "$(cat /var/run/my_process.pid)"
+    rm /var/run/my_process.pid
+    ./manage_my_process &
+    touch /var/run/my_process.pid
+    echo "$!" > /var/run/my_process.pid
+    echo "manage_my_process restarted"
+else
+    echo "Usage: manage_my_process {start|stop|restart}"
+fi
